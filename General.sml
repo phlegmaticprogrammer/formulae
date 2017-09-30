@@ -24,8 +24,8 @@ struct
                    in  f  end
 
   val sum     =  fold (op +) 0
-  val Max     =  fold  max   0
-  val concat  =  fold (op @) []
+  val Max     =  fold  Int.max   0
+  fun concat xs =  fold (op @) [] xs
 
   fun contains list x  =  let fun f    []     =  false
                               |   f (h :: t)  =  (h = x)  orelse  f t

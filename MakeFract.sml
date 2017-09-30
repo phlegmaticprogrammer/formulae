@@ -1,6 +1,10 @@
 signature MAKE_FRACT  =
 sig
-  open BasicTypes;  open BoxTypes
+  type box = BoxTypes.box
+  type node = BoxTypes.node
+  type style = BasicTypes.style
+  type dist = BasicTypes.dist
+
   val makeFract:  style -> dist -> dist -> box -> box -> node
 end  (* signature MAKE_FRACT *)
 (*----------*)
@@ -18,7 +22,7 @@ struct
       and axisDen  =  Denom    st + axh
       val distNum  =  axisNum - halfTh - dnum
       and distDen  =  axisDen - halfTh - hden
-      fun correct dist  =  max (dist, fractMinDist st halfTh)
+      fun correct dist  =  Int.max (dist, fractMinDist st halfTh)
   in  (correct distNum,  correct distDen)  end
 
   fun makeFract  st  th  w  numBox  denBox  =

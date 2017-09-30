@@ -1,6 +1,8 @@
 signature CONST  =
 sig
-  open BasicTypes
+  type penalty = BasicTypes.penalty
+  type dist = BasicTypes.dist
+
   val delimiterFactor:    int		(* in units of 1000 *)
   val delimiterShortfall: dist
   val nullDelimiterSpace: dist

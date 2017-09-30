@@ -1,6 +1,9 @@
 signature DVI_CMD  =
 sig
-  open BasicTypes;  open FontTypes
+  type fontNr = FontTypes.fontNr
+  type charCode = FontTypes.charCode
+  type dist = BasicTypes.dist
+
   val SetChar : fontNr * charCode -> unit
   val PutChar : fontNr * charCode -> unit
   val SetRule : dist * dist -> unit

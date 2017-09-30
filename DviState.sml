@@ -1,6 +1,7 @@
 signature DVI_STATE  =
 sig
-  open BasicTypes;  open FontTypes
+  type dist = BasicTypes.dist
+  type fontNr = FontTypes.fontNr
 
   val getX   :  unit -> dist
   val moveX  :  dist -> unit
@@ -23,7 +24,7 @@ sig
 
   val prevPos  :  unit -> int
   val actPos   :  unit -> int
-  val markPos  :  unit -> unit
+  val markPos  :  unit -> int
 
   val incLevel :  unit -> unit
   val decLevel :  unit -> unit
@@ -68,11 +69,11 @@ struct
   fun actPage  ()  =  !pageNr
   fun nextPage ()  =  inc pageNr
 
-  val oldPos  =  ref (~1)
-  val newPos  =  ref (~1)
-  fun prevPos ()  =  !oldPos
+  val oldPos =  ref (~1)
+  val newPos =  ref (~1)
+  fun prevPos ()   =  !oldPos
   fun actPos  ()  =  !newPos
-  fun markPos ()  =  (oldPos := !newPos;  newPos := outPos ())
+  fun markPos ()  =  (oldPos := !newPos;  newPos := outPos (); !newPos)
 
   val ActLevel  =  ref 0
   val MaxLevel  =  ref 0
@@ -87,8 +88,8 @@ struct
       actFont   :=  noFont;
       fontList  :=  [];
       pageNr    :=  0;
-      oldPos    :=  (~1);
-      newPos    :=  (~1);
+      oldPos    :=  ~1;
+      newPos    :=  ~1;
       ActLevel  :=  0;
       MaxLevel  :=  0
     )

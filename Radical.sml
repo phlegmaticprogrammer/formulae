@@ -1,6 +1,9 @@
 signature RADICAL  =
 sig
-  open BasicTypes;  open BoxTypes
+  type style = BasicTypes.style
+  type box = BoxTypes.box
+  type delim = BoxTypes.delim
+  
   val makeRadical:  style -> delim -> box -> box
 end  (* signature RADICAL *)
 (*----------*)

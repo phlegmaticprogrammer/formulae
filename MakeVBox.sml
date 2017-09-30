@@ -1,6 +1,9 @@
 signature MAKE_VBOX  =
 sig
-  open BasicTypes;  open BoxTypes
+  type node = BoxTypes.node
+  type vlist = BoxTypes.vlist
+  type box = BoxTypes.box
+  type dist = BasicTypes.dist
 
   val makeVBox:  dist -> node -> vlist -> vlist -> box
   (* 1. width,
@@ -47,7 +50,7 @@ struct
   fun dnVBox  w  box  dnList   =   makeVBox w (Box0 box) [] dnList
 
   fun above n1 (dist1, dist) n2  =
-  let val w  =  max (vwidth n1, vwidth n2)
+  let val w  =  Int.max (vwidth n1, vwidth n2)
       val h  =  vsize n1 + dist1
       val d  =  vsize n2 + dist - dist1
       val nodeList  =  [n1, Kern dist, n2]

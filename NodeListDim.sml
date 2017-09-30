@@ -1,7 +1,9 @@
 signature NODE_LIST_DIM  =
 sig
-  open BasicTypes
-  open BoxTypes
+  type hlist = BoxTypes.hlist
+  type vlist = BoxTypes.vlist
+  type dist = BasicTypes.dist
+
   (* Versions of width, height, and depth for node lists *)
   val hlistWidth:  hlist -> dist
   val hlistHeight: hlist -> dist
@@ -15,6 +17,8 @@ structure NodeListDim: NODE_LIST_DIM  =
 struct
   open General
   open NodeDim
+  open BoxTypes
+  open BasicTypes
   fun compute f g nl  =  f (map g nl)
   val hlistWidth   =  compute sum width
   val hlistHeight  =  compute Max height

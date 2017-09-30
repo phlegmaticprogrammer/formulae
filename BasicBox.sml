@@ -1,7 +1,13 @@
 signature BASIC_BOX  =
 sig
-  open BasicTypes
-  open BoxTypes
+  type dist = BasicTypes.dist
+  type node = BoxTypes.node
+  type hlist = BoxTypes.hlist
+  type vlist = BoxTypes.vlist
+  type dim = BoxTypes.dim
+  type glueSpec = BoxTypes.glueSpec
+  type box = BoxTypes.box
+
   val rule: dist -> dist -> node (* height and width *)
   val ssGlue:   glueSpec
   val emptyBox: box
@@ -31,11 +37,11 @@ struct
 
   (* hbox: dim -> hlist -> box
         constructs a hbox with given dimensions and content *)
-  val hbox  =  makebox HBox
+  fun hbox nl =  makebox HBox nl
 
   (* vbox: dim -> vlist -> box
         constructs a vbox with given dimensions and content *)
-  val vbox  =  makebox VBox
+  fun vbox  nl =  makebox VBox nl
 
   val emptyBox : box  =
       hbox  {width = zero,  depth = zero,  height = zero}  []

@@ -1,6 +1,11 @@
 signature MAKE_SCRIPTS  =
 sig
-  open BasicTypes;  open BoxTypes
+  type box = BoxTypes.box
+  type style = BasicTypes.style
+  type dist = BasicTypes.dist
+  type node = BoxTypes.node
+  type hlist = BoxTypes.hlist
+
   val makeSup:
           style -> bool -> bool -> dist -> node -> box -> hlist
   val makeSub:
@@ -18,6 +23,8 @@ struct
   open StyleParams;  open Const
   open Distance;  open General;  open ChangeStyle
   open BasicBox;  open MakeVBox;  open NodeDim
+
+  fun max x = Int.max x
 
   fun almost_xHeight st  =  (xHeight st * 4) div 5
 

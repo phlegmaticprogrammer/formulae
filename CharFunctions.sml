@@ -1,6 +1,10 @@
 signature CHAR_FUNCTIONS  =
 sig
-  open BasicTypes;  open FontTypes
+  type fontNr = FontTypes.fontNr
+  type charCode = FontTypes.charCode
+  type style = BasicTypes.style
+  type family = BasicTypes.family
+
   val fontNumber:   style -> family -> fontNr
   val larger:       fontNr * charCode -> charCode
 end  (* signature CHAR_FUNCTIONS *)

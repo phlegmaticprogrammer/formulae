@@ -1,7 +1,10 @@
 signature GLUE_CALCULATION  =
 sig
-  open BasicTypes
-  open BoxTypes
+  type dist = BasicTypes.dist
+  type node = BoxTypes.node
+  type glueSpec = BoxTypes.glueSpec
+  type glueParam = BoxTypes.glueParam
+  type infOrder = BoxTypes.infOrder 
 
   exception Rigid        (* cannot stretch / shrink *)
 

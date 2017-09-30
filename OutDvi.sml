@@ -1,7 +1,10 @@
 signature OUT_DVI  =
 sig
-  open BasicTypes;  open FontTypes
-  open OutHigh
+  type fontNr = FontTypes.fontNr
+  type charCode = FontTypes.charCode
+  type dist = BasicTypes.dist
+
+
   val setChar  :     charCode -> unit
   val putChar  :     charCode -> unit
   val setRule  :  dist * dist -> unit

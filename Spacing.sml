@@ -1,6 +1,8 @@
 signature SPACING  =
 sig
-  open MathTypes
+  type kind = MathTypes.kind
+  type mathSpace = MathTypes.mathSpace
+
   val mathSpacing:  kind * kind -> mathSpace option
 end  (* signature SPACING *)
 (*----------*)

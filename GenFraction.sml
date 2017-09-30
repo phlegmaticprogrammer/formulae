@@ -1,6 +1,10 @@
 signature GEN_FRACTION  =
 sig
-  open BasicTypes;  open BoxTypes
+  type box = BoxTypes.box
+  type delim = BoxTypes.delim
+  type style = BasicTypes.style
+  type dist = BasicTypes.dist
+
   val makeGenFraction:
       style -> dist option -> delim -> delim -> box -> box -> box
 end  (* signature GEN_FRACTION *)
@@ -14,7 +18,7 @@ struct
   open MakeAtop;  open MakeFract
 
   fun makeGenFraction st thickness left right numBox denBox  =
-  let val width    =  max (#width numBox, #width denBox)
+  let val width    =  Int.max (#width numBox, #width denBox)
       val numBox'  =  rebox width numBox  and  denBox'  =  rebox width denBox
       val th       =  optVal (RuleThickness st) thickness
       val middle   =  if  th = zero  then  makeAtop  st numBox' denBox'

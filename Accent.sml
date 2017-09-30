@@ -1,6 +1,9 @@
 signature ACCENT  =
 sig
-  open BasicTypes;  open BoxTypes
+  type style = BasicTypes.style
+  type family = BasicTypes.family
+  type charCode = FontTypes.charCode
+  type box = BoxTypes.box
   val makeAccent:  style -> family -> charCode -> box -> box
 end  (* signature ACCENT *)
 (*----------*)

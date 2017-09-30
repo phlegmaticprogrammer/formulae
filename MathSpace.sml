@@ -1,6 +1,9 @@
 signature MATH_SPACE  =
 sig
-  open MathTypes;  open BoxTypes
+  type mathSpace = MathTypes.mathSpace
+  type hlist = BoxTypes.hlist
+  type style = BasicTypes.style  
+
   val makeSpace:      style -> mathSpace -> hlist
   val makeSpaceOpt:   style -> mathSpace option -> hlist
 end  (* signature MATH_SPACE *)

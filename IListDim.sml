@@ -1,6 +1,8 @@
 signature ILIST_DIM  =
 sig
-  open BasicTypes;  open IListTypes
+  type ilist = IListTypes.ilist
+  type dist = BasicTypes.dist
+
   val  ilistHeight:  ilist -> dist
   val  ilistDepth:   ilist -> dist
 end  (* signature ILIST_DIM *)
@@ -13,7 +15,7 @@ struct
 
   fun  ilistDim (f: hlist -> dist)  =
        fn []                     =>  zero
-       |  INoad (_, hl) :: rest  =>  max (f hl, ilistDim f rest)
+       |  INoad (_, hl) :: rest  =>  Int.max (f hl, ilistDim f rest)
        |  _             :: rest  =>             ilistDim f rest
 
   val  ilistHeight  =  ilistDim  hlistHeight

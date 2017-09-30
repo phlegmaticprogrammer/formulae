@@ -1,6 +1,13 @@
 signature SET_NODE  =
 sig
-  open BasicTypes;  open BoxTypes
+  type boxkind = BoxTypes.boxkind
+  type fontNr = FontTypes.fontNr
+  type charCode = FontTypes.charCode
+  type dim = BoxTypes.dim
+  type glueSpec = BoxTypes.glueSpec
+  type glueParam = BoxTypes.glueParam
+  type dist = BasicTypes.dist
+
   val outChar:  boxkind -> (fontNr * charCode) -> unit
   val outRule:  boxkind -> dim -> unit
   val outKern:  boxkind -> dist -> unit

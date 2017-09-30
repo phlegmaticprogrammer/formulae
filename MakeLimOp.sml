@@ -1,6 +1,10 @@
 signature MAKE_LIM_OP  =
 sig
-  open BasicTypes;  open BoxTypes
+  type box = BoxTypes.box
+  type style = BasicTypes.style
+  type dist = BasicTypes.dist
+  type node = BoxTypes.node
+
   val makeLimOp:  style -> dist -> node -> box option -> box option -> box
 end  (* signature MAKE_LIM_OP *)
 (*----------*)
@@ -11,7 +15,7 @@ struct
   open General;  open Distance;  open StyleParams
   open BasicBox;  open MakeVBox;  open BoxPack
 
-  fun LimDist distFun posFun st size  =  max (distFun st, posFun st - size)
+  fun LimDist distFun posFun st size  =  Int.max (distFun st, posFun st - size)
 
   val LimSupDist   =  LimDist  BigOpSupDist  BigOpSupPos
   val LimSubDist   =  LimDist  BigOpSubDist  BigOpSubPos

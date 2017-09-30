@@ -1,7 +1,8 @@
 signature NODE_DIM  =
 sig
-  open BasicTypes
-  open BoxTypes
+  type dist = BasicTypes.dist
+  type node = BoxTypes.node
+  
   (* width, height, depth of a node in a horizontal (!) list *)
   val width:  node -> dist
   val height: node -> dist

@@ -1,6 +1,11 @@
 signature BOUNDARIES  =
 sig
-  open BasicTypes;  open BoxTypes;  open IListTypes
+  type style = BasicTypes.style
+  type dist = BasicTypes.dist
+  type delim = BoxTypes.delim
+  type node = BoxTypes.node
+  type ilist = IListTypes.ilist
+
   val makeBoundaries:    style -> dist -> dist -> delim -> delim -> node * node
   val attachBoundaries:  style -> delim -> delim -> ilist -> ilist
 end  (* signature BOUNDARIES *)
@@ -11,12 +16,12 @@ struct
   open BasicTypes;  open BoxTypes;  open IListTypes
   open Const;  open StyleParams;  open Delimiter;  open IListDim
   fun delimiterSize axisDist  =
-      max ((axisDist div 500) * delimiterFactor,   (* units of 1000! *)
+      Int.max ((axisDist div 500) * delimiterFactor,   (* units of 1000! *)
            2 * axisDist - delimiterShortfall)
 
   fun makeBoundaries st height depth left right  =
   let val axh        =  AxisHeight st
-      val axisDist   =  max (height - axh, depth + axh)
+      val axisDist   =  Int.max (height - axh, depth + axh)
       val delSize    =  delimiterSize axisDist
       val leftNode   =  varDelimiter st delSize left
       val rightNode  =  varDelimiter st delSize right

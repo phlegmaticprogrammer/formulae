@@ -1,6 +1,8 @@
 signature CHAR_INFO  =
 sig
-  open BasicTypes;  open FontTypes
+  type fontNr = FontTypes.fontNr
+  type charCode = FontTypes.charCode
+  type dist = BasicTypes.dist
   val charWidth  : fontNr * charCode -> dist
   val charHeight : fontNr * charCode -> dist
   val charDepth  : fontNr * charCode -> dist

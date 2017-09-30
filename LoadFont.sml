@@ -1,8 +1,6 @@
 signature LOAD_FONT  =
 sig
-  open Vector
-  open BasicTypes;  open FontTypes
-  val loadFont:   family * size -> font
+  val loadFont: BasicTypes.family * BasicTypes.size -> FontTypes.font
 end
 (*----------*)
 
@@ -13,6 +11,8 @@ struct
 
   fun famName RM = "RM"  |  famName MI = "MI"
   |   famName SY = "SY"  |  famName EX = "EX"
+
+  fun inputLineForce file = valOf (inputLine file)
 
   fun sizeExt s  =  Int.toString (s div 10) ^ Int.toString (s mod 10)
 
@@ -28,7 +28,7 @@ struct
   (* The next two functions read until the next end of line,
      consuming the newline character *)
   fun getDist size file  =
-  realMult (valOf (Real.fromString (inputLine file)), size)
+  realMult (valOf (Real.fromString (inputLineForce file)), size)
 
   fun getOctal file  =
   let fun found n  =

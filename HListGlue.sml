@@ -1,7 +1,10 @@
 signature HLIST_GLUE  =
 sig
-  open BasicTypes
-  open BoxTypes
+  type hlist = BoxTypes.hlist
+  type dim = BoxTypes.dim
+  type box = BoxTypes.box
+  type dist = BasicTypes.dist
+
   val hlistGlue:  dim -> dist -> hlist -> box
   (* Arguments:
      1. desired width, plus (natural) height, plus (natural) depth

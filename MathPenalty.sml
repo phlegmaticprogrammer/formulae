@@ -1,6 +1,9 @@
 signature MATH_PENALTY  =
 sig
-  open MathTypes;  open IListTypes;  open BoxTypes
+  type kind = MathTypes.kind
+  type ilist = IListTypes.ilist
+  type hlist = BoxTypes.hlist
+
   val mathPenalty:  bool -> kind -> ilist -> hlist
 end  (* signature MATH_PENALTY *)
 (*----------*)

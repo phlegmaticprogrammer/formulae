@@ -1,6 +1,19 @@
 signature MATH_TRANSLATE  =
 sig
-  open BasicTypes;  open BoxTypes;  open MathTypes;  open IListTypes
+  type mlist = MathTypes.mlist
+  type genfraction = MathTypes.genfraction
+  type script = MathTypes.script
+  type limits = MathTypes.limits
+  type dist = BasicTypes.dist
+  type noad = MathTypes.noad
+  type ilist = IListTypes.ilist
+  type style = BasicTypes.style
+  type box = BoxTypes.box
+  type delim = BoxTypes.delim
+  type node = BoxTypes.node
+  type hlist = BoxTypes.hlist
+
+
   val cleanBox:      style -> bool -> mlist -> box
   val doGenFraction: style -> bool -> genfraction -> box
   val doLeftRight:   style -> bool -> delim -> mlist -> delim -> box

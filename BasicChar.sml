@@ -1,6 +1,11 @@
 signature BASIC_CHAR  =
 sig
-  open BasicTypes;  open BoxTypes
+  type node = BoxTypes.node
+  type charCode = FontTypes.charCode
+  type style = BasicTypes.style
+  type family = BasicTypes.family
+  type dist = BasicTypes.dist
+
   val basicChar:  style -> bool -> family -> charCode -> node * dist
 end  (* signature BASIC_CHAR *)
 (*----------*)
